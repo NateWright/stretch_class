@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="stretch_tf" name="stretch_tf" type="stretch_tf_node" />
+</launch>
