@@ -1,13 +1,21 @@
+# Installation
+```bash
+cd ~/catkin_ws/src
+git clone https://github.com/NateWright/stretch_class.git -b example/tf
+cd ..
+catkin build
+source devel/setup.bash
+```
 # Part 1
 Open Gazebo
 ```bash
 # Terminal 1
 roslaunch stretch_gazebo gazebo.launch
 ```
-Run rviz
+Run rviz and nav stack
 ```bash
-# Terminal 2
-roslaunch stretch_tf navigation_gazebo.launch
+# Terminal 2 remember to change map_yaml param to where your map is located
+roslaunch stretch_tf navigation_gazebo.launch map_yaml:=path/to/map.yaml
 ```
 ```bash
 # Terminal 3
