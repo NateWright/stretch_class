@@ -64,3 +64,10 @@ goal:
 ```
 # Part 2
 Perform the same operation for finding a point and for finding the transform but this time transform the point to "link_wrist_yaw". Find the angle the wrist would need to rotate to be pointing at the point you selected.
+
+Run the next command to see the current joint states of the robot. This will give you an array of joint names, positions, velocities and effort.
+```bash
+# Terminal 3
+rostopic echo -n 1 /joint_states
+```
+Identify the joint_wrist_yaw index and find the corresponding position, velocity and effort. The position value is the rotation of the wrist in radians. Find what angle the wrist should be set to to point at the selected point.
