@@ -1,3 +1,0 @@
-<launch>
-    <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find stretch_tf)/rviz/point.rviz" />
-</launch>

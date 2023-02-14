@@ -1,0 +1,30 @@
+controller_list:
+  - name: fake_stretch_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint_lift
+      - joint_arm_l3
+      - joint_arm_l2
+      - joint_arm_l1
+      - joint_arm_l0
+      - joint_wrist_yaw
+  - name: fake_stretch_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint_gripper_finger_left
+      - joint_gripper_finger_right
+  - name: fake_stretch_head_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint_head_pan
+      - joint_head_tilt
+  - name: fake_stretch_dex_wrist_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - joint_wrist_pitch
+      - joint_wrist_roll
+initial:  # Define initial robot poses per group
+#  - group: stretch_arm
+#    pose: home
+
+  []

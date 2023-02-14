@@ -1,0 +1,3 @@
+<launch>
+<node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find stretch_dex_moveit_config)/rviz/example.rviz" />
+</launch>
