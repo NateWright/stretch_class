@@ -10,11 +10,14 @@ catkin build
 source devel/setup.bash
 ```
 
+# Objectives
+Familiarize yourself using moveit via rviz and in code.
+
 # Run Demo
 ```bash
 # Terminal 1
 roslaunch stretch_gazebo gazebo.launch
-# Terminal 2
+# Terminal 2 - Note that this error is expected: Semantic description is not specified for the same robot as the URDF
 roslaunch stretch_dex_moveit_config move_group.launch
 # Terminal 3
 roslaunch stretch_dex_moveit_config rviz.launch
@@ -26,4 +29,4 @@ roslaunch stretch_dex_moveit_config rviz.launch
 # Terminal 3
 rosrun simple_moveit_cpp simple_moveit_cpp_node
 ```
-Students can take a look at cpp file located at simple_moveit_cpp/src/main.cpp to change arguments
+Take a look at cpp file located at simple_moveit_cpp/src/main.cpp to change arguments
