@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(simple_moveit_cpp)
+project(opencv_example)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -9,11 +9,13 @@ project(simple_moveit_cpp)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  moveit_ros_planning_interface
+  cv_bridge
+  image_transport
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Eigen3 REQUIRED)
+# find_package(Boost REQUIRED COMPONENTS system)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -103,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES simple_moveit_cpp
+#  LIBRARIES opencv_example
 #  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
 )
@@ -121,7 +123,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/simple_moveit_cpp.cpp
+#   src/${PROJECT_NAME}/opencv_example.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -132,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_node src/main.cpp)
+add_executable(${PROJECT_NAME}_node src/opencv_example_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -196,7 +198,7 @@ target_link_libraries(${PROJECT_NAME}_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_simple_moveit_cpp.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_opencv_example.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

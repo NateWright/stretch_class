@@ -3,8 +3,7 @@ This repo assumes you are using stretch with dex wrist
 # Installation
 ```bash
 cd ~/catkin_ws/src
-git clone https://github.com/NateWright/stretch_class.git -b example/move-it
-sudo apt install ros-noetic-moveit-planners-chomp ros-noetic-pilz-industrial-motion-planner
+git clone https://github.com/NateWright/stretch_class.git -b example/open-cv
 cd ..
 catkin build
 source devel/setup.bash
