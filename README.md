@@ -1,5 +1,5 @@
 # Requirements
-This repo assumes you are using stretch with dex wrist
+This repo assumes you are using stretch with dex wrist and aws house
 # Installation
 ```bash
 cd ~/catkin_ws/src
@@ -10,22 +10,41 @@ source devel/setup.bash
 ```
 
 # Objectives
-Familiarize yourself using moveit via rviz and in code.
+Familiarize yourself using cv_bridge as well as using classes with publishers and subscribers
 
 # Run Demo
 ```bash
 # Terminal 1
 roslaunch stretch_gazebo gazebo.launch
-# Terminal 2 - Note that this error is expected: Semantic description is not specified for the same robot as the URDF
-roslaunch stretch_dex_moveit_config move_group.launch
+# Terminal 2
+roslaunch opencv_example rviz.launch
 # Terminal 3
-roslaunch stretch_dex_moveit_config rviz.launch
+rosrun  opencv_example opencv_example_node
 ```
+Look at the code and change between the different Sobel edge detection methods on line 44-46
 
 # Run Demo 2
+Modify the callback function to the code below make sure to rebuild and resource after modifying code
 
-```bash
-# Terminal 3
-rosrun simple_moveit_cpp simple_moveit_cpp_node
+```c++
+    cv_bridge::CvImagePtr cv_ptr;
+    cv_bridge::CvImage output;
+    cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
+    Mat hsvImage, mask;
+    // Converts RGB image to HSV image
+    cv::cvtColor(cv_ptr->image, hsvImage, CV_RGB2HSV);
+    // Filters blue into a mask which will be mono
+    cv::inRange(hsvImage, cv::Scalar(60, 35, 140), cv::Scalar(180, 255, 255), mask);
+
+    // Using original message header as header for converted image
+    output.header = msg->header;
+    // Set encoding type to MONO8
+    output.encoding = sensor_msgs::image_encodings::MONO8;
+    // Set image to the mask
+    output.image = mask;
+    // Publishes image
+    pub_.publish(output.toImageMsg());
 ```
-Take a look at cpp file located at simple_moveit_cpp/src/main.cpp to change arguments
+What do you notice happens in the code?
+
+How can you make the code filter other colors?

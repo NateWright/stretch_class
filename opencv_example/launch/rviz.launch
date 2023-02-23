@@ -1,0 +1,3 @@
+<launch>
+    <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find opencv_example)/rviz/sobel.rviz" />
+</launch>
